@@ -11,10 +11,11 @@ const app = express()
 app.use(express.json()) // to pass json, in requests body
 // app.use(express.urlencoded({ urlencoded: false })) //accept key-value pairs in your request bodies.
 
-const port = 3000
+const mongoURI = process.env.MONGO_URI;
+const port = process.env.PORT || 3000;
 
 //  mongoDB setup
-mongoose.connect("mongodb+srv://theanskhan:CYdE5R021Wo6Lz1c@backenddb.kcd2nvs.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB")
+mongoose.connect(mongoURI)
     .then(() => {
         // start express server
         console.log("Connected to MongoDB")
